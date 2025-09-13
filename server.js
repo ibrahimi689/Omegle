@@ -3,8 +3,6 @@ const http = require('http');
 const WebSocket = require('ws');
 const path = require('path');
 const cors = require('cors');
-// Temporarily disable NSFW detector to focus on core functionality
-// const NSFWDetector = require('./models/nsfw-detector.js');
 
 const app = express();
 const server = http.createServer(app);
@@ -13,15 +11,13 @@ const wss = new WebSocket.Server({ server });
 // Enable CORS
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname)));
+
+// ✅ Sirf public folder expose hoga
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Store connected users
 const users = new Map();
 let userCount = 0;
-
-// Initialize NSFW detector - disabled for now
-// const nsfwDetector = new NSFWDetector();
-// nsfwDetector.initialize();
 
 // Store user violations
 const userViolations = new Map();
@@ -66,25 +62,22 @@ function handleMessage(userId, data) {
     const user = users.get(userId);
     if (!user) return;
 
-    // Validation: data.type should be a string
     if (typeof data.type !== 'string') return;
 
-    // Handle ping/pong heartbeat immediately without rate limiting
     if (data.type === 'ping') {
         handlePing(userId, data);
         return;
     }
 
-    // Anti-spam: simple rate limit
     const now = Date.now();
     if (!user.lastMessageTime) user.lastMessageTime = 0;
 
     if (data.type === 'message') {
         if (typeof data.message !== 'string' || data.message.length === 0 || data.message.length > 500) {
-            return; // invalid message
+            return;
         }
 
-        if (now - user.lastMessageTime < 500) { // 500ms cooldown
+        if (now - user.lastMessageTime < 500) {
             console.log(`User ${userId} is spamming, ignoring message`);
             return;
         }
@@ -125,17 +118,14 @@ function handleJoin(userId, data) {
     user.chatType = (data.chatType === 'text' || data.chatType === 'video') ? data.chatType : 'text';
     user.interests = Array.isArray(data.interests) ? data.interests : []; 
     
-    // Find a matching partner
     const partner = findPartner(userId);
     
     if (partner) {
-        // Pair these users
         user.partner = partner.id;
         partner.user.partner = userId;
         user.waiting = false;
         partner.user.waiting = false;
 
-        // Notify both users if connections are still open
         if (user.ws.readyState === WebSocket.OPEN && partner.user.ws.readyState === WebSocket.OPEN) {
             user.ws.send(JSON.stringify({
                 type: 'stranger_connected',
@@ -146,7 +136,6 @@ function handleJoin(userId, data) {
                 chatType: partner.user.chatType
             }));
         } else {
-            // If either connection is closed, reset the pairing
             user.partner = null;
             user.waiting = true;
             if (user.ws.readyState === WebSocket.OPEN) {
@@ -157,7 +146,6 @@ function handleJoin(userId, data) {
             }
         }
     } else {
-        // No partner found yet
         user.waiting = true;
         if (user.ws.readyState === WebSocket.OPEN) {
             user.ws.send(JSON.stringify({ 
@@ -207,12 +195,10 @@ function handleTyping(userId, data) {
     const user = users.get(userId);
     if (!user || !user.partner) return;
     
-    // Validate typing data
     if (typeof data.isTyping !== 'boolean') return;
     
     const partner = users.get(user.partner);
     if (partner && partner.ws.readyState === WebSocket.OPEN) {
-        console.log(`User ${userId} typing status: ${data.isTyping}`);
         partner.ws.send(JSON.stringify({
             type: 'typing',
             isTyping: data.isTyping,
@@ -265,19 +251,12 @@ function handlePing(userId, data) {
     const user = users.get(userId);
     if (!user) return;
 
-    console.log(`Received ping from user ${userId}`);
-    
-    // Send pong response back to the client
     if (user.ws.readyState === WebSocket.OPEN) {
         const pongResponse = {
             type: 'pong',
             timestamp: data.timestamp || Date.now()
         };
-        
         user.ws.send(JSON.stringify(pongResponse));
-        console.log(`Sent pong to user ${userId}`);
-    } else {
-        console.warn(`Cannot send pong to user ${userId}, WebSocket not open`);
     }
 }
 
@@ -285,13 +264,6 @@ function handleNSFWViolation(userId, data) {
     const user = users.get(userId);
     if (!user) return;
 
-    // Log violation
-    console.log(`NSFW violation detected for user ${userId}:`, {
-        confidence: data.confidence,
-        timestamp: new Date().toISOString()
-    });
-
-    // Track violations
     if (!userViolations.has(userId)) {
         userViolations.set(userId, []);
     }
@@ -300,7 +272,6 @@ function handleNSFWViolation(userId, data) {
         confidence: data.confidence
     });
 
-    // Notify partner about video block
     if (user.partner && users.has(user.partner)) {
         const partner = users.get(user.partner);
         if (partner.ws.readyState === WebSocket.OPEN) {
@@ -311,7 +282,6 @@ function handleNSFWViolation(userId, data) {
         }
     }
 
-    // Send warning to violating user
     if (user.ws.readyState === WebSocket.OPEN) {
         user.ws.send(JSON.stringify({
             type: 'nsfw_warning',
@@ -320,10 +290,8 @@ function handleNSFWViolation(userId, data) {
         }));
     }
 
-    // Auto-disconnect after multiple violations
     const violations = userViolations.get(userId);
     if (violations.length >= 3) {
-        console.log(`User ${userId} auto-disconnected for repeated violations`);
         handleLeave(userId);
     }
 }
@@ -335,6 +303,11 @@ function generateUserId() {
 // REST API endpoints
 app.get('/api/users/count', (req, res) => {
     res.json({ count: userCount });
+});
+
+// ✅ Agar koi bhi route match na ho to index.html serve kare
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 // Start server
