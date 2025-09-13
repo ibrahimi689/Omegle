@@ -149,7 +149,7 @@ const videoConnectBtn = document.getElementById('videoConnectBtn');
 
 // Configuration - Use multiple fallback WebSocket servers
 const WS_SERVERS = [
-    'wss://omegle-xyz-1.onrender.com/',
+    'wss://omegle-8hwb.onrender.com/',
     
 ];
 let currentServerIndex = 0;
