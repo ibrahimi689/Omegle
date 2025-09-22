@@ -149,8 +149,8 @@ const videoConnectBtn = document.getElementById('videoConnectBtn');
 
 // Configuration - Use local WebSocket server for Replit environment
 const WS_SERVERS = [
-    `wss://${window.location.host}`,
-    `ws://${window.location.host}`
+    `wss://omegle-wm3r.onrender.com/`,
+    
 ];
 let currentServerIndex = 0;
 const WS_SERVER_URL = WS_SERVERS[currentServerIndex];
