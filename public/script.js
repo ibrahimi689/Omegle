@@ -153,7 +153,7 @@ const WS_SERVERS = [
     // Primary: Use current domain (Replit local server)
     `wss://${window.location.host}`,
     // Fallback: External server if local fails
-    `wss://omegle-1-nat9.onrender.com/`
+    `wss://omegle-1-x28m.onrender.com/`
 ];
 let currentServerIndex = 0;
 const WS_SERVER_URL = WS_SERVERS[currentServerIndex];
