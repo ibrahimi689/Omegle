@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Omegle Web - Modern, Safer Alternative | Omegle.xyz</title>
+    <meta name="description" content="Welcome to Omegle Web - A modern, safer, and friendlier alternative to the original Omegle. Built by students, for everyone. Discover safe online chatting.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+            min-height: 100vh;
+            box-shadow: 0 0 50px rgba(0,0,0,0.1);
+        }
+
+        .header {
+            text-align: center;
+            padding: 40px 0;
+            border-bottom: 3px solid #667eea;
+            margin-bottom: 40px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .logo img {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .logo-text {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #f58220, #ff6b35);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .dotcom {
+            font-size: 1.8rem;
+            color: #666;
+            font-weight: normal;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .lead {
+            font-size: 1.3rem;
+            color: #555;
+            text-align: center;
+            margin-bottom: 40px;
+            font-weight: 500;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h2 {
+            color: #667eea;
+            font-size: 1.8rem;
+            margin: 40px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        h3 {
+            color: #4a5568;
+            font-size: 1.4rem;
+            margin: 30px 0 15px 0;
+        }
+
+        p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        ul, ol {
+            margin: 20px 0;
+            padding-left: 30px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-left: 5px solid #667eea;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .safety-box {
+            background: linear-gradient(135deg, #e8f5e8, #f0f8f0);
+            border-left: 5px solid #28a745;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 8px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-left: 4px solid #667eea;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #667eea;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 50px 0;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255,255,255,0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255,255,255,0.4);
+            background: #f8f9fa;
+        }
+
+        .separator {
+            text-align: center;
+            margin: 40px 0;
+            font-size: 2rem;
+            color: #667eea;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: #5a67d8;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .lead {
+                font-size: 1.1rem;
+            }
+
+            .logo-text {
+                font-size: 2rem;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .highlight-box, .safety-box {
+                padding: 20px;
+                margin: 20px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <img src="logo.png" alt="Omegle Logo">
+                <div>
+                    <span class="logo-text">omegle<span class="dotcom">.com</span></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <h1>Welcome to Omegle Web 🌟</h1>
+
+            <p class="lead">A Modern, Safer, and Friendlier Alternative to the Original Omegle! Built by students, for everyone.</p>
+
+            <p>In today's digital era, connecting with new people across the globe has become easier than ever before. While the original Omegle opened the doors to anonymous video and text chats, it also came with certain safety concerns and outdated features that didn't always match the needs of modern users.</p>
+
+            <p>That's where <strong>Omegle Web</strong> comes in — a modern, safer, and friendlier alternative built by students, for everyone. Our mission is simple: to create a platform where strangers can connect, chat, and share experiences without compromising their safety, privacy, or comfort.</p>
+
+
+            <h2>🚀 Why Omegle Web?</h2>
+
+            <p>When the original Omegle launched, it was revolutionary. It allowed instant conversations with strangers, breaking geographical barriers. However, over time, the platform became associated with issues such as harassment, unsafe content, and lack of moderation.</p>
+
+            <p><strong>Omegle Web addresses these issues head-on.</strong> We've reimagined the concept of anonymous chatting with modern technology, strict safety measures, and a community-first approach.</p>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>1. Safety Comes First</h3>
+                    <p>We understand that online safety is non-negotiable. Omegle Web uses AI-powered moderation and human review systems to detect inappropriate behavior in real-time.</p>
+                    <ul>
+                        <li>Video chats are continuously monitored for harmful or explicit content</li>
+                        <li>Users violating community guidelines face instant bans</li>
+                        <li>We never store private conversations, ensuring end-to-end privacy</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">😊</div>
+                    <h3>2. Designed for a Friendly Experience</h3>
+                    <p>Unlike many anonymous chat sites that feel unsafe or unwelcoming, Omegle Web is built to be inclusive, respectful, and fun.</p>
+                    <ul>
+                        <li>Smart matching connects you with people who share similar interests</li>
+                        <li>You can choose between Text Chat, Video Chat, or Interest-Based Rooms</li>
+                        <li>Ice-breaker prompts help start conversations smoothly</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">💻</div>
+                    <h3>3. Modern UI and Smooth Performance</h3>
+                    <p>The original Omegle's design hasn't changed much in years — it feels outdated. Omegle Web offers a clean, modern, and mobile-friendly interface.</p>
+                    <ul>
+                        <li><strong>No lag:</strong> Our platform is optimized for high-speed connections</li>
+                        <li><strong>Responsive design:</strong> Works equally well on smartphones, tablets, and desktops</li>
+                        <li><strong>One-click start:</strong> No complicated setup, just click "Start Chat" and you're in</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>4. Multiple Chat Modes</h3>
+                    <p>We know that every user has a different mood when chatting online, so Omegle Web offers flexibility in how you connect:</p>
+                    <ul>
+                        <li><strong>Random Video Chat</strong> – See and talk to strangers face-to-face instantly</li>
+                        <li><strong>Random Text Chat</strong> – Keep things anonymous and focus on conversation</li>
+                        <li><strong>Interest-Based Matching</strong> – Meet people who share hobbies, passions, or career fields</li>
+                        <li><strong>Private Rooms</strong> – Share a link with friends and create your own secure chat room</li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <h2>👨‍🎓 Student-Created, Community-Driven</h2>
+
+            <p>Omegle Web isn't built by a big corporation — it's made by a team of tech-savvy students who understand what today's users want. We've created the platform for real people, and we actively take feedback to improve features and moderation.</p>
+
+            <div class="highlight-box">
+                <p><strong>Our belief is simple:</strong> the internet should connect, not harm. By working closely with our users, we ensure that Omegle Web remains a space for genuine, friendly interaction.</p>
+            </div>
+
+
+            <h2>🔒 Our Safety and Privacy Features</h2>
+
+            <p>Here's a closer look at how we protect our users:</p>
+
+            <div class="safety-box">
+                <ol>
+                    <li><strong>AI Content Moderation</strong> – Automatically detects and blocks inappropriate visuals and messages</li>
+                    <li><strong>Report and Block</strong> – If you encounter an unpleasant user, you can instantly report or block them</li>
+                    <li><strong>No Data Storage</strong> – Chats are not saved or recorded. Your privacy matters</li>
+                    <li><strong>Parental Controls</strong> – We have strict age policies and a report system to protect minors</li>
+                    <li><strong>Encryption</strong> – Conversations are encrypted to prevent any third-party access</li>
+                </ol>
+
+                <p><strong>These measures ensure that Omegle Web is a safe space for everyone</strong> — whether you're a teenager looking to make friends, a traveler wanting to learn about other cultures, or just someone in need of a casual conversation.</p>
+            </div>
+
+
+            <h2>🚀 How to Use Omegle Web</h2>
+
+            <p>Using Omegle Web is quick and easy:</p>
+
+            <div class="highlight-box">
+                <ol>
+                    <li>Visit our homepage on your browser</li>
+                    <li>Choose between Text Chat or Video Chat</li>
+                    <li>Add your interests for better matches (optional)</li>
+                    <li>Click Start Chat — and meet your new conversation partner instantly!</li>
+                </ol>
+
+                <p><strong>No lengthy sign-ups, no unnecessary personal details</strong> — just simple, secure chatting.</p>
+            </div>
+
+
+            <h2>💡 Tips for a Great Omegle Web Experience</h2>
+
+            <ul>
+                <li><strong>Be Respectful</strong> – Treat others how you want to be treated</li>
+                <li><strong>Stay Safe</strong> – Never share personal information like your address, phone number, or passwords</li>
+                <li><strong>Use Interests</strong> – Adding your hobbies helps find like-minded people</li>
+                <li><strong>Report Bad Behavior</strong> – Help us keep the platform safe by reporting violations</li>
+            </ul>
+
+
+            <h2>🔮 Our Vision for the Future</h2>
+
+            <p>We don't just want to be another chat site. Omegle Web is a growing community with plans for exciting new features:</p>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Language Translation</h3>
+                    <p>Chat with people worldwide without language barriers</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">✅</div>
+                    <h3>Verified Profiles</h3>
+                    <p>Optional badges for trusted users</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🎉</div>
+                    <h3>Event-Based Rooms</h3>
+                    <p>Join discussions on trending topics or watch parties</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🎙️</div>
+                    <h3>Voice-Only Chat</h3>
+                    <p>Perfect for when you don't feel like being on camera</p>
+                </div>
+            </div>
+
+            <p><strong>Our goal is to make Omegle Web the safest and most enjoyable way to meet strangers online.</strong></p>
+
+
+            <h2>🎯 Final Words</h2>
+
+            <p>The internet is full of opportunities to connect, but it's also full of risks. With Omegle Web, you get the excitement of meeting strangers without the dangers that often come with it. Our combination of modern design, strict safety rules, and friendly vibes makes us the ultimate alternative to the original Omegle.</p>
+
+            <p>Built by students who understand the need for fun and security, Omegle Web is here to change the way people think about online chatting. Whether you're here to make friends, learn new cultures, practice a language, or simply pass the time, you'll find that Omegle Web is your safe space on the internet.</p>
+
+            <div class="cta-section">
+                <h2 style="color: white; border: none; margin-bottom: 15px;">Ready to Start Your Journey?</h2>
+                <p style="font-size: 1.2rem; margin-bottom: 20px;">Join Omegle Web today — and experience online chatting the way it should be: fun, safe, and friendly.</p>
+                <a href="index.html" class="cta-button">Start Chatting Now</a>
+            </div>
+
+            <div style="text-align: center; margin: 50px 0; padding: 30px; background: #f8f9fa; border-radius: 15px;">
+                <p style="font-size: 1.3rem; color: #667eea; font-weight: bold; margin: 0;">🌟 Welcome to the future of online chatting! 🌟</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
