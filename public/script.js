@@ -115,6 +115,7 @@ const termsModal = document.getElementById('termsModal');
 const closeTermsModal = document.getElementById('closeTermsModal');
 const agreeBtn = document.getElementById('agreeBtn');
 const chatExitBtn = document.getElementById('chatExitBtn');
+const typingIndicator = document.getElementById('typingIndicator');
 const videoExitBtn = document.getElementById('videoExitBtn');
 const chatMessages = document.getElementById('chatMessages');
 const videoChatMessages = document.getElementById('videoChatMessages');
