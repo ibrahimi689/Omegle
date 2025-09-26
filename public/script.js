@@ -130,6 +130,7 @@ const attachMenu = document.getElementById('attachMenu');
 const sendLocation = document.getElementById('sendLocation');
 const sendPhoto = document.getElementById('sendPhoto');
 const footerTermsBtn = document.getElementById('footerTermsBtn');
+const mediaPreview = document.getElementById('mediaPreview');
 const footerPrivacyBtn = document.getElementById('footerPrivacyBtn');
 const footerAboutBtn = document.getElementById('footerAboutBtn');
 const sendVideo = document.getElementById('sendVideo');
