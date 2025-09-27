@@ -1,0 +1,35 @@
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.omegle.com/sitemap.xml
+
+# Allow crawling of main pages
+Allow: /index.html
+Allow: /about.html
+Allow: /contact.html
+Allow: /privacy-policy.html
+Allow: /terms.html
+Allow: /welcome-article.html
+Allow: /privacy-article.html
+Allow: /no-app-article.html
+Allow: /superior-experience-article.html
+
+# Allow static assets
+Allow: /logo.png
+Allow: /favicon.ico
+Allow: /manifest.json
+Allow: /style.css
+Allow: /script.js
+
+# Disallow server-side files and sensitive directories
+Disallow: /server.js
+Disallow: /package.json
+Disallow: /.replit
+Disallow: /.config/
+Disallow: /node_modules/
+Disallow: /.git/
+
+# Crawl delay (optional - helps with server load)
+Crawl-delay: 1

@@ -1,0 +1,378 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms & Conditions | Omegle Web</title>
+    <meta name="description" content="Terms and Conditions for using Omegle Web - Random video and text chat platform">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .exit-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            background: #ff4444;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(255, 68, 68, 0.3);
+        }
+
+        .exit-button:hover {
+            background: #e63946;
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(255, 68, 68, 0.4);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+            min-height: 100vh;
+            box-shadow: 0 0 50px rgba(0,0,0,0.1);
+        }
+
+        .header {
+            text-align: center;
+            padding: 40px 0;
+            border-bottom: 3px solid #667eea;
+            margin-bottom: 40px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .logo img {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .logo-text {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #f58220, #ff6b35);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .dotcom {
+            font-size: 1.8rem;
+            color: #666;
+            font-weight: normal;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 30px;
+            padding: 10px 15px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+        }
+
+        .back-button:hover {
+            background: #667eea;
+            color: white;
+            transform: translateX(-3px);
+        }
+
+        .content {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .effective-date {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 30px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        h2 {
+            color: #667eea;
+            font-size: 1.8rem;
+            margin: 40px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        ul, ol {
+            margin: 20px 0 20px 30px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-left: 5px solid #667eea;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+            border-left: 5px solid #ffc107;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 8px;
+        }
+
+        .contact-box {
+            background: linear-gradient(135deg, #d4edda, #c3e6cb);
+            border-left: 5px solid #28a745;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 8px;
+        }
+
+        .separator {
+            text-align: center;
+            margin: 40px 0;
+            font-size: 2rem;
+            color: #667eea;
+        }
+
+        strong {
+            color: #333;
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .logo-text {
+                font-size: 2rem;
+            }
+
+            .highlight-box, .warning-box, .contact-box {
+                padding: 20px;
+                margin: 20px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <img src="logo.png" alt="Omegle Logo">
+                <div>
+                    <span class="logo-text">omegle<span class="dotcom">.com</span></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <a href="index.html" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                Back to Home
+            </a>
+
+            <h1>📋 Terms & Conditions</h1>
+            
+            <div class="effective-date">
+                <strong>Effective Date: January 2026</strong>
+            </div>
+
+            <p>Welcome to Omegle Web. By accessing or using our website, you agree to be bound by these Terms & Conditions. If you do not agree, please stop using our services immediately.</p>
+
+            <div class="separator">***</div>
+
+            <h2>1. Acceptance of Terms</h2>
+
+            <p>By using Omegle Web, you agree to follow these Terms & Conditions, our Privacy Policy, and any other rules posted on the site. We may update these terms at any time, and continued use of the website means you accept any changes.</p>
+
+            <div class="separator">***</div>
+
+            <h2>2. Eligibility</h2>
+
+            <div class="highlight-box">
+                <ul>
+                    <li>You must be at least <strong>18 years old</strong>, or the minimum legal age in your country, to use our services.</li>
+                    <li>Minors may use the site only under parental or guardian supervision.</li>
+                </ul>
+            </div>
+
+            <div class="separator">***</div>
+
+            <h2>3. Our Services</h2>
+
+            <p>Omegle Web offers:</p>
+
+            <ul>
+                <li><strong>Random video and text chatting</strong></li>
+                <li><strong>Interest-based matching</strong></li>
+                <li><strong>Private chat rooms</strong></li>
+            </ul>
+
+            <p>We aim to provide a safe and friendly environment, but we are not responsible for the actions or content of other users.</p>
+
+            <div class="separator">***</div>
+
+            <h2>4. User Responsibilities</h2>
+
+            <p>When using Omegle Web, you agree to:</p>
+
+            <div class="warning-box">
+                <ul>
+                    <li><strong>Not share personal information</strong> (address, phone number, passwords, bank details)</li>
+                    <li><strong>Not engage in illegal activities</strong> such as harassment, threats, fraud, or sharing explicit content</li>
+                    <li><strong>Respect other users</strong> and avoid abusive, hateful, or discriminatory behavior</li>
+                    <li><strong>Not upload or transmit harmful code</strong> such as viruses or malware</li>
+                </ul>
+                <p><strong>Failure to follow these rules may result in a permanent ban.</strong></p>
+            </div>
+
+            <div class="separator">***</div>
+
+            <h2>5. Content and Moderation</h2>
+
+            <ul>
+                <li>All chats are monitored using AI and human moderators to detect harmful content.</li>
+                <li>We may remove, block, or report users who violate these terms.</li>
+                <li>We are not liable for user-generated content and do not endorse it.</li>
+            </ul>
+
+            <div class="separator">***</div>
+
+            <h2>6. Disclaimer of Warranties</h2>
+
+            <p>Omegle Web is provided <strong>"as is"</strong> without warranties of any kind. We do not guarantee uninterrupted service, error-free performance, or that the platform will be free from harmful content.</p>
+
+            <div class="separator">***</div>
+
+            <h2>7. Limitation of Liability</h2>
+
+            <p>To the fullest extent permitted by law, Omegle Web and its team are not responsible for:</p>
+
+            <ul>
+                <li>Any damages caused by using our services</li>
+                <li>Any loss of data, privacy breaches, or third-party actions</li>
+            </ul>
+
+            <div class="separator">***</div>
+
+            <h2>8. Third-Party Links and Ads</h2>
+
+            <div class="highlight-box">
+                <ul>
+                    <li>Our website may contain links to third-party sites and display ads from Google AdSense and other networks.</li>
+                    <li>We are not responsible for the content, privacy practices, or services of third-party websites.</li>
+                </ul>
+            </div>
+
+            <div class="separator">***</div>
+
+            <h2>9. Termination of Access</h2>
+
+            <p>We reserve the right to:</p>
+
+            <ul>
+                <li>Suspend or terminate your access without prior notice if you violate these terms</li>
+                <li>Take legal action if necessary</li>
+            </ul>
+
+            <div class="separator">***</div>
+
+            <h2>10. Changes to These Terms</h2>
+
+            <p>We may modify these Terms & Conditions at any time. Updates will be posted on this page with the new effective date.</p>
+
+            <div class="separator">***</div>
+
+            <h2>11. Governing Law</h2>
+
+            <p>These terms shall be governed by and interpreted according to applicable laws, without regard to conflict of law principles.</p>
+
+            <div class="separator">***</div>
+
+            <h2>12. Contact Us</h2>
+
+            <div class="contact-box">
+                <p>For questions about these Terms & Conditions, please contact:</p>
+
+                <p><strong>Omegle Web Support Team</strong><br>
+                📧 Email: mmohddaudkahan70@gmail.com<br>
+                🌐 Website: Your domain name</p>
+            </div>
+
+            <div class="separator">***</div>
+
+            <div style="text-align: center; margin: 50px 0; padding: 30px; background: #f8f9fa; border-radius: 15px;">
+                <p style="font-size: 1.2rem; color: #667eea; font-weight: bold; margin: 0;">Thank you for using Omegle Web responsibly! 🌟</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
